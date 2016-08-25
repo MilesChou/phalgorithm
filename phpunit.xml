@@ -12,10 +12,10 @@
 >
     <testsuites>
         <testsuite name="tests">
-			<file>tests/Algorithm/CombinationNofMTest.php</file>
+			<file>tests/CombinationNofMTest.php</file>
         </testsuite>
         <testsuite name="performance">
-			<file>tests/Algorithm/CombinationNofMPerformanceTest.php</file>
+			<file>tests/CombinationNofMPerformanceTest.php</file>
         </testsuite>
     </testsuites>
     <filter>
