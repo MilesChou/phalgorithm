@@ -35,3 +35,6 @@ Desktop.ini
 # Compoesr files
 /vendor
 /composer.lock
+
+# Artifacts files
+/build
