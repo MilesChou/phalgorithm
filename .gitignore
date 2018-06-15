@@ -1,13 +1,10 @@
-# Composer file
-vendor
-composer.phar
-
-# Global/Temp file
+# Global/Temp.gitignore
 *~
 *.swp
 
 # Global/OSX.gitignore
 .DS_Store
+.AppleDouble
 
 # Thumbnails
 ._*
@@ -21,9 +18,20 @@ Thumbs.db
 Desktop.ini
 
 # NetBeans project files
-nbproject/*
+/nbproject/*
 
 # IntelliJ IDEA project files
-.idea
-*.iml
+/.idea
 
+# Eclipse project files
+/.project
+/.buildpath
+/.settings
+/.classpath
+
+# SVN files
+.svn/
+
+# Compoesr files
+/vendor
+/composer.lock
