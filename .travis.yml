@@ -6,7 +6,7 @@ php:
 script:
   - composer install
   - php vendor/bin/phpcs --standard=PSR2 src tests
-  - php vendor/bin/phpunit --testsuite tests --coverage-text
+  - php vendor/bin/phpunit --coverage-text
 
 cache:
   directories:
