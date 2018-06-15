@@ -14,9 +14,6 @@
         <testsuite name="tests">
 			<file>tests/CombinationNofMTest.php</file>
         </testsuite>
-        <testsuite name="performance">
-			<file>tests/CombinationNofMPerformanceTest.php</file>
-        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
