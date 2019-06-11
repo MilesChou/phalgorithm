@@ -2,6 +2,7 @@
 
 namespace Phalgorithm;
 
+use Closure;
 use InvalidArgumentException;
 
 /**
@@ -14,7 +15,7 @@ class CombinationNofM
      * @param int $n Get N elements in source data
      * @param Closure $storeFunction function($indexArray, $srcArray) return mixed, return custom format
      * @return array
-     * @throws Exception
+     * @throws InvalidArgumentException
      */
     public static function run(array $srcArray, $n, $storeFunction = null)
     {
@@ -28,7 +29,7 @@ class CombinationNofM
 
         // Set store function
         if ($storeFunction === null) {
-            $storeFunction = function ($indexArray, $srcArray) {
+            $storeFunction = static function ($indexArray, $srcArray) {
                 $result = array();
                 foreach ($indexArray as $v) {
                     $result[] = $srcArray[$v];
@@ -37,7 +38,7 @@ class CombinationNofM
             };
         }
 
-        // Assameble array
+        // Assemble array
         $indexArray = range(1, $n);
 
         $result = array();
@@ -45,11 +46,11 @@ class CombinationNofM
         $result[] = $storeFunction($indexArray, $srcArray);
 
         while ($indexArray[0] < $m - $n + 1) {
-            if ($indexArray[$n - 1] != $m) {
+            if ($indexArray[$n - 1] !== $m) {
                 $pos = $n - 1;
             } else {
                 $pos = $n - 2;
-                while ($indexArray[$pos + 1] - $indexArray[$pos] == 1) {
+                while ($indexArray[$pos + 1] - $indexArray[$pos] === 1) {
                     --$pos;
                 }
             }

@@ -1,8 +1,9 @@
 <?php
 
-namespace Phalgorithm;
+namespace Tests;
 
 use InvalidArgumentException;
+use Phalgorithm\CombinationNofM;
 use PHPUnit_Framework_TestCase;
 
 class CombinationNofMTest extends PHPUnit_Framework_TestCase
