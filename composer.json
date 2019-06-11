@@ -1,5 +1,5 @@
 {
-    "name": "mileschou/algorithm",
+    "name": "mileschou/phalgorithm",
     "license": "MIT",
     "description": "General Algorithm",
     "keywords": [
@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Algorithm\\": "src"
+            "Phalgorithm\\": "src"
         }
     },
     "autoload-dev": {

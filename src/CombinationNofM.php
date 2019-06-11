@@ -1,6 +1,6 @@
 <?php
 
-namespace Algorithm;
+namespace Phalgorithm;
 
 use InvalidArgumentException;
 
