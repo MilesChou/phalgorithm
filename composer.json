@@ -2,8 +2,8 @@
     "name": "mileschou/phalgorithm",
     "license": "MIT",
     "description": "General Algorithm",
+    "type": "library",
     "keywords": [
-        "library",
         "algorithm"
     ],
     "authors": [
@@ -18,7 +18,8 @@
     "require-dev": {
         "phpbench/phpbench": "^0.10.0",
         "phpunit/phpunit": ">=4.8 <6",
-        "squizlabs/php_codesniffer": "^3.3"
+        "squizlabs/php_codesniffer": "^3.4",
+        "php-coveralls/php-coveralls": "^2.1"
     },
     "autoload": {
         "psr-4": {
