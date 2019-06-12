@@ -2,6 +2,8 @@
 * text=lf
 
 # Exclude unused files
+/.github export-ignore
+/benchmarks export-ignore
 /tests export-ignore
 /.coveralls.yml export-ignore
 /.gitattributes export-ignore
