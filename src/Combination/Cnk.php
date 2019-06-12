@@ -1,30 +1,32 @@
 <?php
 
-namespace Phalgorithm;
+namespace Phalgorithm\Combination;
 
 use Closure;
 use InvalidArgumentException;
 
 /**
- * N of M combination
+ * The number of k-combinations, C(n, k), n > k
+ *
+ * @see https://en.wikipedia.org/wiki/Combination#Number_of_k-combinations
  */
-class CombinationNofM
+class Cnk
 {
     /**
-     * @param array $srcArray Source data, total is M elements
-     * @param int $n Get N elements in source data
+     * @param array $srcArray Source data, total is N elements
+     * @param int $k Get K elements in source data
      * @param Closure $storeFunction function($indexArray, $srcArray) return mixed, return custom format
      * @return array
      * @throws InvalidArgumentException
      */
-    public static function run(array $srcArray, $n, $storeFunction = null)
+    public static function run(array $srcArray, $k, $storeFunction = null)
     {
-        // Total is M elements
-        $m = count($srcArray);
+        // Total is N elements
+        $n = count($srcArray);
         array_unshift($srcArray, '');
 
-        if ($m < $n || $n <= 0) {
-            throw new InvalidArgumentException('Input M and N is invalid.');
+        if ($n < $k || $k <= 0) {
+            throw new InvalidArgumentException('Input N and K is invalid.');
         }
 
         // Set store function
@@ -39,29 +41,30 @@ class CombinationNofM
         }
 
         // Assemble array
-        $indexArray = range(1, $n);
+        $indexArray = range(1, $k);
 
         $result = array();
 
         $result[] = $storeFunction($indexArray, $srcArray);
 
-        while ($indexArray[0] < $m - $n + 1) {
-            if ($indexArray[$n - 1] !== $m) {
-                $pos = $n - 1;
+        while ($indexArray[0] < $n - $k + 1) {
+            if ($indexArray[$k - 1] !== $n) {
+                $pos = $k - 1;
             } else {
-                $pos = $n - 2;
+                $pos = $k - 2;
                 while ($indexArray[$pos + 1] - $indexArray[$pos] === 1) {
                     --$pos;
                 }
             }
 
             ++$indexArray[$pos];
-            for ($i = $pos + 1; $i < $n; ++$i) {
+            for ($i = $pos + 1; $i < $k; ++$i) {
                 $indexArray[$i] = $indexArray[$i - 1] + 1;
             }
 
             $result[] = $storeFunction($indexArray, $srcArray);
         }
+
         return $result;
     }
 }

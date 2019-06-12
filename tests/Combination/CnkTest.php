@@ -3,10 +3,10 @@
 namespace Tests;
 
 use InvalidArgumentException;
-use Phalgorithm\CombinationNofM;
+use Phalgorithm\Combination\Cnk;
 use PHPUnit_Framework_TestCase;
 
-class CombinationNofMTest extends PHPUnit_Framework_TestCase
+class CnkTest extends PHPUnit_Framework_TestCase
 {
     const START_NUMBER = 1;
 
@@ -23,7 +23,7 @@ class CombinationNofMTest extends PHPUnit_Framework_TestCase
         $inputSet = $this->getInputSet($collection);
 
         // Act
-        CombinationNofM::run($inputSet, $selection);
+        Cnk::run($inputSet, $selection);
     }
 
     /**
@@ -39,7 +39,7 @@ class CombinationNofMTest extends PHPUnit_Framework_TestCase
         $inputSet = $this->getInputSet($collection);
 
         // Act
-        CombinationNofM::run($inputSet, $selection);
+        Cnk::run($inputSet, $selection);
     }
 
     /**
@@ -53,7 +53,7 @@ class CombinationNofMTest extends PHPUnit_Framework_TestCase
         $inputSet = $this->getInputSet($collection);
 
         // Act
-        $result = CombinationNofM::run($inputSet, $selection);
+        $result = Cnk::run($inputSet, $selection);
 
         // Assert
         $this->assertEquals(1, count($result));
@@ -73,7 +73,7 @@ class CombinationNofMTest extends PHPUnit_Framework_TestCase
         $expectCount = $this->getCombinationCount($collection, $selection);
 
         // Act
-        $result = CombinationNofM::run($inputSet, $selection);
+        $result = Cnk::run($inputSet, $selection);
 
         // Assert
         $this->assertEquals($expectCount, count($result));
@@ -93,7 +93,7 @@ class CombinationNofMTest extends PHPUnit_Framework_TestCase
         $expectCount = $this->getCombinationCount($collection, $selection);
 
         // Act
-        $result = CombinationNofM::run($inputSet, $selection);
+        $result = Cnk::run($inputSet, $selection);
 
         // Assert
         $this->assertEquals($expectCount, count($result));
@@ -116,7 +116,7 @@ class CombinationNofMTest extends PHPUnit_Framework_TestCase
         $expectCount = $this->getCombinationCount($collection, $selection);
 
         // Act
-        $result = CombinationNofM::run($expectSet, $selection);
+        $result = Cnk::run($expectSet, $selection);
 
         // Assert
         $this->assertEquals($expectCount, count($result));
