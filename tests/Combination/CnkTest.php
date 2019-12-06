@@ -4,9 +4,9 @@ namespace Tests;
 
 use InvalidArgumentException;
 use Phalgorithm\Combination\Cnk;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class CnkTest extends PHPUnit_Framework_TestCase
+class CnkTest extends TestCase
 {
     const START_NUMBER = 1;
 
