@@ -1,8 +1,6 @@
 #!/usr/bin/make -f
 
-PHP_MAJOR_VERSION := $(shell php -r "echo PHP_MAJOR_VERSION;")
-
-.PHONY: clean clean-all check test coverage
+.PHONY: clean clean-all check test coverage bench
 
 # ---------------------------------------------------------------------
 
@@ -13,16 +11,16 @@ clean:
 
 clean-all: clean
 	rm -rf ./vendor
+	rm -rf ./composer.lock
 
 check:
 	php vendor/bin/phpcs
 
 test: check
-ifeq ($(PHP_MAJOR_VERSION), 7)
 	phpdbg -qrr vendor/bin/phpunit
-else
-	php vendor/bin/phpunit
-endif
 
 coverage: test
 	@if [ "`uname`" = "Darwin" ]; then open build/coverage/index.html; fi
+
+bench:
+	php vendor/bin/phpbench run --report=default

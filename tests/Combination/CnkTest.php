@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\Combination;
 
 use InvalidArgumentException;
 use Phalgorithm\Combination\Cnk;
@@ -12,11 +12,11 @@ class CnkTest extends TestCase
 
     /**
      * Throws exception when selection is greater than collection.
-     *
-     * @expectedException InvalidArgumentException
      */
     public function testExceptionWhenSelectionGtCollection()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         // Arrange
         $collection = 3;
         $selection = 5;
@@ -28,11 +28,11 @@ class CnkTest extends TestCase
 
     /**
      * Throws exception when selection is less than or equal zero.
-     *
-     * @expectedException InvalidArgumentException
      */
     public function testExceptionSelectionLteZero()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         // Arrange
         $collection = 5;
         $selection = 0;
@@ -56,7 +56,7 @@ class CnkTest extends TestCase
         $result = Cnk::run($inputSet, $selection);
 
         // Assert
-        $this->assertEquals(1, count($result));
+        $this->assertCount(1, $result);
         $this->assertTrue($this->resultIsInExpectedSet($inputSet, $result));
     }
 
@@ -76,7 +76,7 @@ class CnkTest extends TestCase
         $result = Cnk::run($inputSet, $selection);
 
         // Assert
-        $this->assertEquals($expectCount, count($result));
+        $this->assertCount($expectCount, $result);
         $this->assertTrue($this->resultIsInExpectedSet($expectSet, $result));
     }
 
@@ -96,7 +96,7 @@ class CnkTest extends TestCase
         $result = Cnk::run($inputSet, $selection);
 
         // Assert
-        $this->assertEquals($expectCount, count($result));
+        $this->assertCount($expectCount, $result);
         $this->assertTrue($this->resultIsInExpectedSet($expectSet, $result));
     }
 
@@ -119,7 +119,7 @@ class CnkTest extends TestCase
         $result = Cnk::run($expectSet, $selection);
 
         // Assert
-        $this->assertEquals($expectCount, count($result));
+        $this->assertCount($expectCount, $result);
         $this->assertTrue($this->resultIsInExpectedSet($expectSet, $result));
     }
 
@@ -130,7 +130,7 @@ class CnkTest extends TestCase
      * @param array $results
      * @return boolean
      */
-    public function resultIsInExpectedSet($expectSet, $results)
+    public function resultIsInExpectedSet($expectSet, $results): bool
     {
         foreach ($results as $result) {
             foreach ($result as $item) {
@@ -143,9 +143,9 @@ class CnkTest extends TestCase
     }
 
     /**
-     * Assamble count
+     * Assemble count
      *
-     * @param array $collectionSize
+     * @param int $collectionSize
      * @param int $selectSize
      * @return int
      */
@@ -160,9 +160,9 @@ class CnkTest extends TestCase
      * @param int $collectionSize
      * @return array
      */
-    public function getResultSetExpected($collectionSize)
+    public function getResultSetExpected($collectionSize): array
     {
-        $result = self::getInputSet($collectionSize);
+        $result = $this->getInputSet($collectionSize);
         foreach ($result as $k => $v) {
             $result[$k] = str_pad((int) $v, 2, '0', STR_PAD_LEFT);
         }
@@ -173,13 +173,14 @@ class CnkTest extends TestCase
      * @param int $collectionSize
      * @return array
      */
-    public function getInputSet($collectionSize)
+    public function getInputSet(int $collectionSize): array
     {
         $collection = range(self::START_NUMBER, $collectionSize);
         // Integer to string
         foreach ($collection as $k => $v) {
             $collection[$k] = str_pad((int) $v, 2, '0', STR_PAD_LEFT);
         }
+
         return $collection;
     }
 }
