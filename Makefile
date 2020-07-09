@@ -25,17 +25,20 @@ coverage: test
 bench:
 	php vendor/bin/phpbench run --report=default
 
-shell8.0:
-	docker run -it --rm -v ${PWD}:/source:delegated -w /source php:8.0-rc-alpine sh
+bench8.0-jit:
+	docker-compose run --rm php8.0-jit
 
-shell7.4:
-	docker run -it --rm -v ${PWD}:/source:delegated -w /source php:7.4-alpine sh
+bench8.0:
+	docker-compose run --rm php8.0
 
-shell7.3:
-	docker run -it --rm -v ${PWD}:/source:delegated -w /source php:7.3-alpine sh
+bench7.4:
+	docker-compose run --rm php7.4
 
-shell7.2:
-	docker run -it --rm -v ${PWD}:/source:delegated -w /source php:7.2-alpine sh
+bench7.3:
+	docker-compose run --rm php7.3
 
-shell7.1:
-	docker run -it --rm -v ${PWD}:/source:delegated -w /source php:7.1-alpine sh
+bench7.2:
+	docker-compose run --rm php7.2
+
+bench7.1:
+	docker-compose run --rm php7.1

@@ -2,7 +2,6 @@
 
 namespace Phalgorithm\Combination;
 
-use Closure;
 use InvalidArgumentException;
 
 /**
@@ -15,7 +14,7 @@ class Cnk
     /**
      * @param array $srcArray Source data, total is N elements
      * @param int $k Get K elements in source data
-     * @param Closure $storeFunction function($indexArray, $srcArray) return mixed, return custom format
+     * @param callable $storeFunction function($indexArray, $srcArray) return mixed, return custom format
      * @return array
      * @throws InvalidArgumentException
      */
@@ -32,7 +31,7 @@ class Cnk
         // Set store function
         if ($storeFunction === null) {
             $storeFunction = static function ($indexArray, $srcArray) {
-                $result = array();
+                $result = [];
                 foreach ($indexArray as $v) {
                     $result[] = $srcArray[$v];
                 }
@@ -43,7 +42,7 @@ class Cnk
         // Assemble array
         $indexArray = range(1, $k);
 
-        $result = array();
+        $result = [];
 
         $result[] = $storeFunction($indexArray, $srcArray);
 

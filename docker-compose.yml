@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  php7.1: &basic
+    image: php:7.1-alpine
+    working_dir: /source
+    volumes:
+      - .:/source:delegated
+      - ./php-opcache.ini:/usr/local/etc/php/php.ini:delegated
+    command: php vendor/bin/phpbench run --report=default
+
+  php7.2:
+    <<: *basic
+    image: php:7.2-alpine
+
+  php7.3:
+    <<: *basic
+    image: php:7.3-alpine
+
+  php7.4:
+    <<: *basic
+    image: php:7.4-alpine
+
+  php8.0:
+    <<: *basic
+    image: php:8.0-rc-alpine
+
+  php8.0-jit:
+    <<: *basic
+    image: php:8.0-rc-alpine
+    volumes:
+      - .:/source:delegated
+      - ./php-jit.ini:/usr/local/etc/php/php.ini:delegated

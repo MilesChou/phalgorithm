@@ -2,6 +2,7 @@
     "bootstrap": "vendor/autoload.php",
     "path": "benchmarks",
     "php_config": {
-        "memory_limit": "1024M"
-    }
+        "memory_limit": "-1"
+    },
+    "time_unit": "milliseconds"
 }
