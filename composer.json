@@ -13,7 +13,8 @@
         }
     ],
     "require": {
-        "php": "^7.1 | ^8"
+        "php": "^7.1 | ^8",
+        "brick/math": "^0.8.15"
     },
     "require-dev": {
         "phpbench/phpbench": "^0.16.0",

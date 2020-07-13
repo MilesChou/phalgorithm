@@ -2,27 +2,30 @@
 
 namespace Benchmarks;
 
-use Phalgorithm\Combination\Cnk;
+use Phalgorithm\LongPI;
 use PhpBench\Benchmark\Metadata\Annotations\OutputTimeUnit;
+use PhpBench\Benchmark\Metadata\Annotations\Revs;
 use PhpBench\Benchmark\Metadata\Annotations\Warmup;
 
-class CnkBench
+class LongPIBench
 {
     /**
      * @Warmup(1)
+     * @Revs(5)
      * @OutputTimeUnit("milliseconds", precision=3)
      */
-    public function benchCombinationCn50k4()
+    public function benchLongPI10digit()
     {
-        Cnk::run(range(1, 50), 4);
+        $pi = (string)(new LongPI(10));
     }
 
     /**
      * @Warmup(1)
+     * @Revs(5)
      * @OutputTimeUnit("seconds", precision=3)
      */
-    public function benchCombinationCn50k5()
+    public function benchLongPI100digit()
     {
-        Cnk::run(range(1, 50), 5);
+        $pi = (string)(new LongPI(100));
     }
 }
